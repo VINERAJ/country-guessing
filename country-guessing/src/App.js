@@ -1,17 +1,10 @@
 import logo from './logo.svg';
+import countries from './main_flag.png';
 import React, { useState } from 'react';
-import {
-  BrowserRouter,
-  useNavigate,
-  Route,
-  Routes,
-  useLocation,
-} from 'react-router-dom';
+import { useNavigate, Route, Routes } from 'react-router-dom';
 import Papa from 'papaparse';
 import './App.css';
 import Game from './Game.js';
-
-var countries;
 
 // function MyButton() {
 //   const navigate = useNavigate();
@@ -38,6 +31,7 @@ function HandleClick() {
   function Clicked() {
     navigate('/game');
   }
+
   return (
     <button onClick={Clicked} className="my-button">
       Click to begin!
@@ -45,26 +39,40 @@ function HandleClick() {
   );
 }
 
+function MainPage() {
+  return (
+    <div>
+      <React.Fragment>
+        {/* <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a> */}
+        <div>
+          <img src={countries} className="App-logo" alt="img" />
+        </div>
+        <h1>Country Guessing Game</h1>
+        <p>Click the button below to begin!</p>
+        <HandleClick />
+      </React.Fragment>
+    </div>
+  );
+}
+
 function App() {
-  const location = useLocation();
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <HandleClick />
         <Routes>
           <Route path="/game" element={<Game />}></Route>
+          <Route path="/" element={<MainPage />}></Route>
         </Routes>
       </header>
     </div>
