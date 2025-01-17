@@ -34,6 +34,13 @@
   background-color: #61dafb;
 }
 
+.dem-button {
+  height: 50px;
+  width: 120px;
+  color: rgb(0, 0, 0);
+  background-color: #61dafb;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

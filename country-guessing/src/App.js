@@ -1,8 +1,6 @@
-import logo from './logo.svg';
 import countries from './main_flag.png';
 import React, { useState } from 'react';
 import { useNavigate, Route, Routes } from 'react-router-dom';
-import Papa from 'papaparse';
 import './App.css';
 import Game from './Game.js';
 
@@ -25,16 +23,41 @@ import Game from './Game.js';
 //     </button>
 //   );
 // }
-
-function HandleClick() {
+function DemonymMode() {
   const navigate = useNavigate();
   function Clicked() {
-    navigate('/game');
+    navigate('/game', { state: { mode: 'demonym' } });
+  }
+
+  return (
+    <button onClick={Clicked} className="dem-button">
+      Demonym Mode
+    </button>
+  );
+}
+
+function CapitalMode() {
+  const navigate = useNavigate();
+  function Clicked() {
+    navigate('/game', { state: { mode: 'capital' } });
   }
 
   return (
     <button onClick={Clicked} className="my-button">
-      Click to begin!
+      Capital Mode
+    </button>
+  );
+}
+
+function LeaderMode() {
+  const navigate = useNavigate();
+  function Clicked() {
+    navigate('/game', { state: { mode: 'leader' } });
+  }
+
+  return (
+    <button onClick={Clicked} className="dem-button">
+      Leader Mode
     </button>
   );
 }
@@ -60,7 +83,9 @@ function MainPage() {
         </div>
         <h1>Country Guessing Game</h1>
         <p>Click the button below to begin!</p>
-        <HandleClick />
+        <DemonymMode />
+        <CapitalMode />
+        <LeaderMode />
       </React.Fragment>
     </div>
   );
